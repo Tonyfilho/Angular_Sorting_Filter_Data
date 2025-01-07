@@ -45,7 +45,9 @@ export class UserTableComponent implements OnInit, OnDestroy {
 
   sortTable(column: string) {
     const futureSortingOrder = this.isDescSorting(column) ? 'asc' : 'desc';
-    return (this.sorting = { column, order: futureSortingOrder });
+    (this.sorting = { column, order: futureSortingOrder })
+    this.sortAllTable(column);
+    return this.sorting;
   }
 
   sortAllTable(column: string) {
