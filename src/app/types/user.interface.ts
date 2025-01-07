@@ -1,4 +1,4 @@
-export interface UserInterface {
+export interface IUserInterface {
     id: string;
     name: string;
     age: number;
