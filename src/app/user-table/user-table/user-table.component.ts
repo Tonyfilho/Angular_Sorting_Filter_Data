@@ -17,7 +17,7 @@ export class UserTableComponent implements OnInit, OnDestroy {
   /* protected localUserTable: IUserInterface[] | any[] = []; podemos por o | any[] para n dar error de compilação no FOR de FOR
    * Ou Usar a solução KEYOF protected columns: Array<keyof IUserInterface> = ['id', 'name', 'age']; */
   protected columns: Array<keyof IUserInterface> = ['id', 'name', 'age'];
-  protected sorting: ISortingInterface = {column: 'id', order: 'asc'}
+  protected sorting: ISortingInterface = { column: 'id', order: 'asc' };
 
   ngOnInit(): void {
     this.unSubs = this.userTableServer.getUsers().subscribe({
@@ -36,7 +36,49 @@ export class UserTableComponent implements OnInit, OnDestroy {
      */
     return str.charAt(0).toUpperCase() + str.substring(1);
   }
+  isDescSorting(column: string): boolean {
+    return this.sorting.column === column && this.sorting.order === 'desc';
+  }
+  isAscSorting(column: string): boolean {
+    return this.sorting.column === column && this.sorting.order === 'asc';
+  }
 
+  sortTable(column: string) {
+    const futureSortingOrder = this.isDescSorting(column) ? 'asc' : 'desc';
+    return (this.sorting = { column, order: futureSortingOrder });
+  }
+
+  sortAllTable(column: string) {
+    // Ordenação ascendente por idade
+    const ascendingByAge = [...this.localUserTable].sort(
+      (a, b) => a.age - b.age
+    );
+
+    // Ordenação descendente por idade
+    const descendingByAge = [...this.localUserTable].sort(
+      (a, b) => b.age - a.age
+    );
+
+    // Ordenação ascendente por nome
+    const ascendingByName = [...this.localUserTable].sort((a, b) =>
+      a.name.localeCompare(b.name)
+    );
+
+    // Ordenação descendente por nome
+    const descendingByName = [...this.localUserTable].sort((a, b) =>
+      b.name.localeCompare(a.name)
+    );
+
+    // Ordenação ascendente por ID
+    const ascendingById = [...this.localUserTable].sort(
+      (a, b) => parseInt(a.id) - parseInt(b.id)
+    );
+
+    // Ordenação descendente por ID
+    const descendingById = [...this.localUserTable].sort(
+      (a, b) => parseInt(b.id) - parseInt(a.id)
+    );
+  }
   ngOnDestroy(): void {
     this.unSubs.unsubscribe();
   }

@@ -49,6 +49,21 @@ tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
+.arrow {
+    font-size: 1.5rem; /* Tamanho grande */
+    font-weight: bolder; /* Deixar mais espesso */
+    color: #ff6347; /* Cor vibrante */
+    cursor: pointer;
+  }
+  
+  .up {
+    color: rgb(0, 23, 128); /* Personalize a seta para cima */
+  }
+  
+  .down {
+    color: red; /* Personalize a seta para baixo */
+  }
+  
 @media (max-width: 600px) {
     th, td {
         font-size: 14px;

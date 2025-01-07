@@ -5,9 +5,10 @@
         <table>
             <thead>
                 <tr>
-                    @for (name of this.columns; track $index) {
+                    @for (column of this.columns; track $index) {
     
-                    <th>{{this.capitalizer(name)}}</th>
+                    <th (click)="sortTable(column)">{{this.capitalizer(column)}} @if (isDescSorting(column)) {<span class="arrow up" >↓</span> }  @if (isAscSorting(column)) {<span class="arrow down">↑</span>}</th>
+                    
     
                     }
                 </tr>

@@ -38,9 +38,15 @@ That function will transforma 1º letter of the string in Upcase
 # Create a Sorting Type
 this type will use in sorting Function Data
 
-# Create a Sorting Function
+# Create a Sorting Functions
 create a local var to defaut sorting
+inside of html in he span must user  alt+24 ↑ and alt+25 ↓ to access UTF-8 Symbols
 
+# Create a SortAllTable Function
+That function will update de var sorting.
+Obs: Observações:
+Imutabilidade: Para preservar o array original, use o operador de espalhamento ([...]) antes de ordenar.
+localeCompare: É ideal para ordenação de strings, respeitando regras de ordenação alfabética, incluindo casos especiais como acentos.
 
 
 
