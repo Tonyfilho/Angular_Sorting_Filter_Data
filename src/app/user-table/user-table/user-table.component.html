@@ -1,1 +1,30 @@
-<p>user-table works!</p>
+<body>
+    <div class="container">
+        <p>By Tony Filho</p>
+    
+        <table>
+            <thead>
+                <tr>
+                    @for (name of this.columns; track $index) {
+    
+                    <th>{{this.capitalizer(name)}}</th>
+    
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @for (user of this.localUserTable; track $index) {
+                <tr>
+                    @for (column of this.columns; track $index) {
+                    <td> {{ user[column] }}</td>
+                    }
+    
+                </tr>
+                }
+            </tbody>
+        </table>
+    
+    </div>
+    
+</body>
+

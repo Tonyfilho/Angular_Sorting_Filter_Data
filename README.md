@@ -28,6 +28,19 @@ create a local var to user into the OnDestroy will do UnSuscrible.
 
 # Create a Table
 create a table into the useTableComponent.html
+create a local var to receive all collums
+
+# Create a CSS
+
+# Create a Function capitalize
+That function will transforma 1º letter of the string in Upcase
+
+# Create a Sorting Type
+this type will use in sorting Function Data
+
+# Create a Sorting Function
+create a local var to defaut sorting
+
 
 
 

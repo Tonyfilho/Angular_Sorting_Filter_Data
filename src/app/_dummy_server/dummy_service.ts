@@ -16,7 +16,10 @@ export const USER = new Observable<IUserInterface[]>(d => d.next([
   { "id": "12", "name": "Laura", "age": 39 },
   { "id": "13", "name": "Michael", "age": 44 },
   { "id": "14", "name": "Nina", "age": 26 },
-  { "id": "15", "name": "Oscar", "age": 27 },
+ 
+]));
+
+/** { "id": "15", "name": "Oscar", "age": 27 },
   { "id": "16", "name": "Paula", "age": 39 },
   { "id": "17", "name": "Quentin", "age": 39 },
   { "id": "18", "name": "Rachel", "age": 47 },
@@ -31,8 +34,7 @@ export const USER = new Observable<IUserInterface[]>(d => d.next([
   { "id": "27", "name": "Andrew", "age": 50 },
   { "id": "28", "name": "Bianca", "age": 29 },
   { "id": "29", "name": "Catherine", "age": 48 },
-  { "id": "30", "name": "Daniel", "age": 32 }
-]));
+  { "id": "30", "name": "Daniel", "age": 32 } */
 
 
 
