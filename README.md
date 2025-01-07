@@ -12,7 +12,27 @@ Learn how to create custom Angular table without any libraries. We will implemen
    ...
    you can find in /app/_mock_server
 ]
+
+# Create a userTableComponent 
+  ng g c user-table/user-table/
+  now We will put the <app-user-table></app-user-table> into the app component
+
 # Create a Server will GET and  return a Observable, representing a kind webservice
+ng g s user-table/
+create a getUser().
+
+# Inject our service into the component
+implement 2 interface, OnInit and OnDestroy
+create a local var to receive all data from Service .
+create a local var to user into the OnDestroy will do UnSuscrible.
+
+# Create a Table
+create a table into the useTableComponent.html
+
+
+
+
+
 
 
 

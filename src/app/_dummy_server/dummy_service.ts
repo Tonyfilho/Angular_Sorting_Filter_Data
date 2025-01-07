@@ -1,7 +1,7 @@
 import { Observable } from "rxjs";
 import { IUserInterface } from "../types/user.interface";
 
-export const user = new Observable<IUserInterface[]>(d => d.next([
+export const USER = new Observable<IUserInterface[]>(d => d.next([
   { "id": "1", "name": "Alice", "age": 34 },
   { "id": "2", "name": "Bob", "age": 59 },
   { "id": "3", "name": "Charlie", "age": 26 },
