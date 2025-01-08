@@ -1,10 +1,20 @@
-<nav class="nav">
-    <a class="nav-link active" aria-current="page" [routerLink]="'/user-table'" routerLinkActive="active"
-   [ routerLinkActiveOptions]="{exact: true}">Active</a>
-    <a class="nav-link" href="#">Link</a>
-    <a class="nav-link" href="#">Link</a>
-    
-  </nav>
+<div class="table">
+
+    <body>
+        <header>
+            <nav class="nav">
+                <a class="nav-link active" aria-current="page" [routerLink]="'/user-table'" routerLinkActive="active" 
+                   >Active</a>
+                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" href="#">Link</a>
+            </nav>
 
 
-<router-outlet />
+
+        </header>
+        <main><router-outlet /></main>
+        <footer></footer>
+    </body>
+
+
+</div>

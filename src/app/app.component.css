@@ -1,0 +1,6 @@
+.table {
+    width: 100%;
+    min-height: 100vw;
+    background: linear-gradient(to bottom, blue, silver);
+
+}
