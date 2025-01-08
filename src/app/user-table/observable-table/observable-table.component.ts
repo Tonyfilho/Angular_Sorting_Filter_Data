@@ -1,10 +1,12 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+
 
 @Component({
   selector: 'app-observable-table',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './observable-table.component.html',
-  styleUrl: './observable-table.component.css'
+  styleUrl: './../user-table/user-table.component.css'
 })
 export class ObservableTableComponent {
 
