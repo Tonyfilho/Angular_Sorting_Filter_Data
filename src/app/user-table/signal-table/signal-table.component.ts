@@ -47,12 +47,41 @@ export class SignalTableComponent {
   }
   /** mundando o tipo de sorting, atuando nas Arrows do Html */
   sortTable(column: string): void {
-    // this.isDescSorting(column) ? this.sorting = {column, order: 'desc'} : this.sorting = {column, order: 'asc'};
+    // this.isDescSorting(column) ? this.sorting = {column, order: 'asc'} : this.sorting = {column, order: 'desc'}; ou este
     /**Se isDescSorting é True se for DESC, então inverto e mando ASC dentro do ternario */
-    const nextSort = this.isDescSorting(column) ? 'asc': 'desc';
-    this.sorting = {column, order:  nextSort };
+    const nextSort = this.isDescSorting(column) ? 'asc' : 'desc';
+    this.sorting = { column, order: nextSort };
   }
-  
 
+  sortAllData(column: string) {
+    switch (column) {
+      case 'age':
+        /**sorting Age asc */
+        const sortAgeAsc: IUserInterface[] = this.users().sort(
+          (asc, desc) => asc.age - desc.age
+        );
+        const sortAgeDesc: IUserInterface[] = this.users().sort(
+          (asc, desc) => desc.age - asc.age
+        );
 
+        break;
+      case 'name':
+        const sortNameAsc: IUserInterface[] = this.users().sort((asc, desc) =>
+          asc.name.localeCompare(desc.name)
+        );
+        const sortNameDesc: IUserInterface[] = this.users().sort((asc, desc) =>
+          desc.name.localeCompare(asc.name)
+        );
+        break;
+
+      default:
+        const sortIdAsc: IUserInterface[] = this.users().sort(
+          (asc, desc) => parseInt(asc.id) - parseInt(desc.id)
+        );
+        const sortIdDesc: IUserInterface[] = this.users().sort(
+          (asc, desc) => parseInt(desc.id) - parseInt(asc.id)
+        );
+        break;
+    }
+  }
 } /**end class */
