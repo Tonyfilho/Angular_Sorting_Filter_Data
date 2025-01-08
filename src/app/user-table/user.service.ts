@@ -6,7 +6,7 @@ import { USER } from '../_dummy_server/dummy_service';
 @Injectable({
   providedIn: 'root',
 })
-export class UserTableService {
+export class UserService {
   constructor() {}
 
   getUsers(): Observable<IUserInterface[]> {

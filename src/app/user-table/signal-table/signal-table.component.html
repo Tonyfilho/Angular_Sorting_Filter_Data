@@ -5,23 +5,27 @@
         <table>
             <thead>
                 <tr>
-
-
-                    <th><span class="arrow up">↓</span> <span class="arrow down">↑</span>
+                    @for (column of this.columns; track $index) {
+                    <th (click)="sortTable(column)" >{{ this.capitalize(column )}}
+                        @if (this.isDescSorting(column)) {
+                            <span class="arrow down">↓</span>
+                        }
+                        @if (this.isAscSorting(column)) {
+                            <span class="arrow up">↑</span>
+                        }
                     </th>
-
-
-
+                    }
                 </tr>
             </thead>
             <tbody>
-
+                <!-- cada user gerará uma row -->
+                @for (user of this.users(); track $index) {
                 <tr>
-
-                    <td> </td>
-
-
+                    @for (column of this.columns; track $index) {
+                    <td> {{ user[column]}}</td>
+                    }
                 </tr>
+                }
 
             </tbody>
         </table>

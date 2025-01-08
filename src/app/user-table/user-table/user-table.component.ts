@@ -1,5 +1,5 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
-import { UserTableService } from '../user-table.service';
+import { UserService } from '../user.service';
 import { IUserInterface } from '../../types/user.interface';
 import { Subscription } from 'rxjs';
 import { ISortingInterface } from '../../types/sorting.interface';
@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './user-table.component.css',
 })
 export class UserTableComponent implements OnInit, OnDestroy {
-  protected userTableServer = inject(UserTableService);
+  protected userTableServer = inject(UserService);
   protected unSubs!: Subscription;
   protected localUserTable: IUserInterface[] = [];
   /* protected localUserTable: IUserInterface[] | any[] = []; podemos por o | any[] para n dar error de compilação no FOR de FOR
