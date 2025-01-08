@@ -51,32 +51,12 @@ export class UserTableComponent implements OnInit, OnDestroy {
   }
 
   sortAllData(column: string) {
-    // Ordenação ascendente por nome
-    const ascendingByName = [...this.localUserTable].sort((a, b) =>
-      a.name.localeCompare(b.name)
-    );
-
-    // Ordenação descendente por nome
-    const descendingByName = [...this.localUserTable].sort((a, b) =>
-      b.name.localeCompare(a.name)
-    );
-
-    // Ordenação ascendente por ID
-    const ascendingById = [...this.localUserTable].sort(
-      (a, b) => parseInt(a.id) - parseInt(b.id)
-    );
-
-    // Ordenação descendente por ID
-    const descendingById = [...this.localUserTable].sort(
-      (a, b) => parseInt(b.id) - parseInt(a.id)
-    );
-
     switch (column) {
       case 'age':
         // Ordenação ascendente por idade
         const ascendingByAge = [...this.localUserTable].sort(
           (a, b) => a.age - b.age
-        );       
+        );
 
         // Ordenação descendente por idade
         const descendingByAge = [...this.localUserTable].sort(
@@ -86,13 +66,48 @@ export class UserTableComponent implements OnInit, OnDestroy {
         // this.sorting.column === 'asc' ? this.localUserTable = [...ascendingByAge] : this.localUserTable = [...descendingByAge];
         if (this.sorting.order === 'asc') {
           this.localUserTable = [];
-          return (this.localUserTable = [...ascendingByAge]);
+          this.localUserTable = [...ascendingByAge];
         } else {
           this.localUserTable = [];
-          return (this.localUserTable = [...descendingByAge]);
+          this.localUserTable = [...descendingByAge];
+        }
+        break;
+      case 'name':
+        // Ordenação ascendente por nome
+        const ascendingByName = [...this.localUserTable].sort((a, b) =>
+          a.name.localeCompare(b.name)
+        );
+
+        // Ordenação descendente por nome
+        const descendingByName = [...this.localUserTable].sort((a, b) =>
+          b.name.localeCompare(a.name)
+        );
+        if (this.sorting.order === 'asc') {
+          this.localUserTable = [];
+          this.localUserTable = [...ascendingByName];
+        } else {
+          this.localUserTable = [];
+          this.localUserTable = [...descendingByName];
+        }
+        break;
+      default:
+        // Ordenação ascendente por ID
+        const ascendingById = [...this.localUserTable].sort(
+          (a, b) => parseInt(a.id) - parseInt(b.id)
+        );
+
+        // Ordenação descendente por ID
+        const descendingById = [...this.localUserTable].sort(
+          (a, b) => parseInt(b.id) - parseInt(a.id)
+        );
+        if (this.sorting.order === 'asc') {
+          this.localUserTable = [];
+          this.localUserTable = [...ascendingById];
+        } else {
+          this.localUserTable = [];
+          this.localUserTable = [...descendingById];
         }
 
-      default:
         break;
     }
   }
