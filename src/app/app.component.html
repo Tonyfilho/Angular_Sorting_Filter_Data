@@ -1,4 +1,10 @@
-<app-user-table></app-user-table>
+<nav class="nav">
+    <a class="nav-link active" aria-current="page" [routerLink]="'/user-table'" routerLinkActive="active"
+   [ routerLinkActiveOptions]="{exact: true}">Active</a>
+    <a class="nav-link" href="#">Link</a>
+    <a class="nav-link" href="#">Link</a>
+    
+  </nav>
 
 
 <router-outlet />

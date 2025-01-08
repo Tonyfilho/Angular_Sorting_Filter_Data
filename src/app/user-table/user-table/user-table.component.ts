@@ -3,10 +3,12 @@ import { UserTableService } from '../user-table.service';
 import { IUserInterface } from '../../types/user.interface';
 import { Subscription } from 'rxjs';
 import { ISortingInterface } from '../../types/sorting.interface';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-user-table',
-  imports: [],
+  imports: [RouterModule, CommonModule],
   templateUrl: './user-table.component.html',
   styleUrl: './user-table.component.css',
 })
