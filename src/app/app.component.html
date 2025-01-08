@@ -3,17 +3,21 @@
     <body>
         <header>
             <nav class="nav">
-                <a class="nav-link active" aria-current="page" [routerLink]="'/user-table'" routerLinkActive="active" 
-                   >Active</a>
-                <a class="nav-link" href="#">Link</a>
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link active" aria-current="page" [routerLink]="'/user-table'"
+                    routerLinkActive="active">Normal Table</a>
+                <a class="nav-link" href="#">Signal Table</a>
+                <a class="nav-link" href="#">Observable Table</a>
             </nav>
 
 
 
         </header>
         <main><router-outlet /></main>
-        <footer></footer>
+
+        <footer>
+            <p>&copy; 2025 My Angular Project | Develop by <a href="https://github.com/Tonyfilho">My GitHub</a></p>
+        </footer>
+
     </body>
 
 

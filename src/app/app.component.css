@@ -1,6 +1,69 @@
-.table {
-    width: 100%;
-    min-height: 100vw;
-    background: linear-gradient(to bottom, blue, silver);
 
+
+/* Header */
+header {
+    background-color: #007bff;
+    padding: 10px 20px;
+    color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Navegação */
+.nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: white;
+    padding: 10px 15px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-link:hover {
+    background-color: #0056b3;
+    color: #e2e2e2;
+}
+
+.nav-link.active {
+    font-weight: bold;
+    border-bottom: 2px solid #ffcc00;
+}
+
+/* Main */
+main {
+    flex: 1;
+    padding: 20px;
+    background-color: #fff;
+}
+
+
+/* Footer fixo */
+footer {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding: 15px 20px;
+    font-size: 14px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Link no footer */
+footer a {
+    color: #e6c545;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #e2e2e2;
 }
