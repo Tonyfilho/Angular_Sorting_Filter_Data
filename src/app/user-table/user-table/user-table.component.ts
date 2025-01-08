@@ -22,7 +22,7 @@ export class UserTableComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.unSubs = this.userTableServer.getUsers().subscribe({
       next: (response) => {
-        (this.localUserTable = response), console.log('response: ', response);
+        (this.localUserTable = response);
       },
       error: (e) => {},
       complete: () => {},
@@ -46,26 +46,17 @@ export class UserTableComponent implements OnInit, OnDestroy {
   sortTable(column: string) {
     const futureSortingOrder = this.isDescSorting(column) ? 'asc' : 'desc';
     (this.sorting = { column, order: futureSortingOrder })
-    this.sortAllTable(column);
+    this.sortAllData(column);
     return this.sorting;
   }
 
-  sortAllTable(column: string) {
-    // Ordenação ascendente por idade
-    const ascendingByAge = [...this.localUserTable].sort(
-      (a, b) => a.age - b.age
-    );
-
-    // Ordenação descendente por idade
-    const descendingByAge = [...this.localUserTable].sort(
-      (a, b) => b.age - a.age
-    );
-
+  sortAllData(column: string) {
+    
     // Ordenação ascendente por nome
     const ascendingByName = [...this.localUserTable].sort((a, b) =>
       a.name.localeCompare(b.name)
     );
-
+    
     // Ordenação descendente por nome
     const descendingByName = [...this.localUserTable].sort((a, b) =>
       b.name.localeCompare(a.name)
@@ -75,11 +66,36 @@ export class UserTableComponent implements OnInit, OnDestroy {
     const ascendingById = [...this.localUserTable].sort(
       (a, b) => parseInt(a.id) - parseInt(b.id)
     );
-
+    
     // Ordenação descendente por ID
     const descendingById = [...this.localUserTable].sort(
       (a, b) => parseInt(b.id) - parseInt(a.id)
     );
+    
+    
+    
+    switch (column) {
+      case 'age':
+        // Ordenação ascendente por idade
+        const ascendingByAge = [...this.localUserTable].sort(
+          (a, b) => a.age - b.age
+        );
+        console.log("Ascendente por idade:", ascendingByAge, "sorting: ", this.sorting.order);
+        
+        // Ordenação descendente por idade
+        const descendingByAge = [...this.localUserTable].sort(
+          (a, b) => b.age - a.age
+        );
+        this.localUserTable = [];
+        console.log("Descendente por idade:", descendingByAge,  "sorting: ", this.sorting.order);
+        this.sorting.column === 'asc' ? this.localUserTable = [...ascendingByAge] : this.localUserTable = [...descendingByAge];
+        console.log("LocalTable:", this.localUserTable);
+        
+        break;
+    
+      default:
+        break;
+    }
   }
   ngOnDestroy(): void {
     this.unSubs.unsubscribe();
