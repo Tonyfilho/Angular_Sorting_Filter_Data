@@ -1,12 +1,10 @@
 .start {
-    margin: 0;
-    
-    font-family: Arial, sans-serif;
- 
+    margin: 0;    
+    font-family: Arial, sans-serif; 
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    min-height: 90vh;
   
     text-align: center;
 }
