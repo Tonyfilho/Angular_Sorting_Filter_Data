@@ -9,5 +9,5 @@ import { RouterModule, RouterOutlet } from '@angular/router';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
- dateTime = DateTime;
+ dateTime = DateTime.now();
 }
