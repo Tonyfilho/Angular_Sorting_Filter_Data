@@ -7,7 +7,7 @@
 
                 <tr>
                     @for (column of this.columns; track $index) {
-                    <th>{{ column }}<span class="arrow up">↓</span> <span class="arrow down">↑</span>
+                    <th (click)="this.sortArrowTable(column)">{{ this.capitalizer(column) }} @if (isArrowUp(column)) {<span class="arrow up">↓</span>} @if (isArrowDown(column)) {<span class="arrow down">↑</span>} 
                     </th>
                     }
                 </tr>
