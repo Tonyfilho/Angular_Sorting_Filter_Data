@@ -1,3 +1,4 @@
+import { DateTime } from 'luxon';
 import { Component } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
 
@@ -8,5 +9,5 @@ import { RouterModule, RouterOutlet } from '@angular/router';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  // localDate: Luxon = new Luxo
+ dateTime = DateTime;
 }
