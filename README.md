@@ -48,6 +48,7 @@ Obs: Observações:
 Imutabilidade: Para preservar o array original, use o operador de espalhamento ([...]) antes de ordenar.
 localeCompare: É ideal para ordenação de strings, respeitando regras de ordenação alfabética, incluindo casos especiais como acentos.
 
+# Implement the Filter Data
 
 
 
