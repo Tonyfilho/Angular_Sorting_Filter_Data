@@ -4,24 +4,25 @@
 
         <table>
             <thead>
+
                 <tr>
-
-
-                    <th><span class="arrow up">↓</span> <span class="arrow down">↑</span>
+                    @for (column of this.columns; track $index) {
+                    <th>{{ column }}<span class="arrow up">↓</span> <span class="arrow down">↑</span>
                     </th>
-
-
-
+                    }
                 </tr>
             </thead>
             <tbody>
-
+                @for (user of this.user | async; track $index) {
                 <tr>
+                    @for (column of this.columns; track $index) {
 
-                    <td> </td>
-
+                    <td> {{ user[column] }} </td>
+                    }
 
                 </tr>
+
+                }
 
             </tbody>
         </table>
