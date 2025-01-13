@@ -5,10 +5,11 @@ import { Subscription } from 'rxjs';
 import { ISortingInterface } from '../../types/sorting.interface';
 
 import { CommonModule } from '@angular/common';
+import { FormGroup, ReactiveFormsModule, UntypedFormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-user-table',
-  imports: [CommonModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './user-table.component.html',
   styleUrl: './user-table.component.css',
 })
@@ -20,6 +21,10 @@ export class UserTableComponent implements OnInit, OnDestroy {
    * Ou Usar a solução KEYOF protected columns: Array<keyof IUserInterface> = ['id', 'name', 'age']; */
   protected columns: Array<keyof IUserInterface> = ['id', 'name', 'age'];
   protected sorting: ISortingInterface = { column: 'id', order: 'asc' };
+  private fb = inject(UntypedFormBuilder);
+ userTableForm: FormGroup = this.fb.nonNullable.group({
+  search_name: ['']
+ });
 
   ngOnInit(): void {
     this.unSubs = this.userTableServer.getUsers().subscribe({
@@ -112,6 +117,13 @@ export class UserTableComponent implements OnInit, OnDestroy {
 
         break;
     }
+  }
+
+  searchByName(search: string): void {
+   if (search) {
+     const filterTable: IUserInterface[] = [...this.localUserTable].filter(ret => ret.name.toLowerCase().indexOf(search.toLowerCase()) > -1 );
+     this.localUserTable = [...filterTable];   
+   }
   }
   ngOnDestroy(): void {
     this.unSubs.unsubscribe();
