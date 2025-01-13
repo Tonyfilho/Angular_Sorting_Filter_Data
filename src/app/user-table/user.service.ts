@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { delay, Observable } from 'rxjs';
 import { IUserInterface } from '../types/user.interface';
 import { USER } from '../_dummy_server/dummy_service';
 
@@ -10,6 +10,6 @@ export class UserService {
   constructor() {}
 
   getUsers(): Observable<IUserInterface[]> {
-    return USER;
+    return USER.pipe(delay(1000));
   }
 }

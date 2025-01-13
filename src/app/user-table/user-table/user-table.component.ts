@@ -34,6 +34,9 @@ export class UserTableComponent implements OnInit, OnDestroy {
       error: (e) => {},
       complete: () => {},
     });
+    this.userTableForm.valueChanges.subscribe(d => {
+      
+      console.log(d)});
   }
 
   capitalizer(str: string): string {

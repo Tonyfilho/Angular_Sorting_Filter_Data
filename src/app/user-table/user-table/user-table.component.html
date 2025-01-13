@@ -1,20 +1,17 @@
 <div class="start">
     <div class="container">
         <p>By Tony Filho</p>
-        <form [formGroup]="userTableForm">
-            <div class="row">
-                <div class="col-md-6 offset-md-3">
 
-                    <!-- Email -->
-                    <div class="mb-3">
-                        <label for="search-name" class="form-label">Search Name</label>
-                        <input type="text" class="form-control" id="search-name" placeholder="Search By Name"
-                            formControlName="search_name" />
-                    </div>
+        <div class="grid text-center">
+            <form [formGroup]="userTableForm">
+                <div class="g-col-6 g-col-md-4">
+                    <label for="search-name" class="form-label">Search Name</label>
+                    <input type="text" class="form-control" id="search-name" placeholder="Search By Name"
+                        formControlName="search_name" />
                 </div>
-            </div>
 
-        </form>
+            </form>
+        </div>
 
         <table>
             <thead>
