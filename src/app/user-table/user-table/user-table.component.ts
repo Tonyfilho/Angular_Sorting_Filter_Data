@@ -5,7 +5,11 @@ import { delay, Subscription } from 'rxjs';
 import { ISortingInterface } from '../../types/sorting.interface';
 
 import { CommonModule } from '@angular/common';
-import { FormGroup, ReactiveFormsModule, UntypedFormBuilder } from '@angular/forms';
+import {
+  FormGroup,
+  ReactiveFormsModule,
+  UntypedFormBuilder,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-user-table',
@@ -22,9 +26,9 @@ export class UserTableComponent implements OnInit, OnDestroy {
   protected columns: Array<keyof IUserInterface> = ['id', 'name', 'age'];
   protected sorting: ISortingInterface = { column: 'id', order: 'asc' };
   private fb = inject(UntypedFormBuilder);
- userTableForm: FormGroup = this.fb.nonNullable.group({
-  search_name: ['']
- });
+  userTableForm: FormGroup = this.fb.nonNullable.group({
+    search_name: [''],
+  });
 
   ngOnInit(): void {
     this.unSubs = this.userTableServer.getUsers().subscribe({
@@ -34,7 +38,6 @@ export class UserTableComponent implements OnInit, OnDestroy {
       error: (e) => {},
       complete: () => {},
     });
-    
   }
 
   capitalizer(str: string): string {
@@ -121,21 +124,25 @@ export class UserTableComponent implements OnInit, OnDestroy {
   }
 
   searchByName(search: string) {
-  const   noFilterTable: IUserInterface[] = [...this.localUserTable];
-  
-   if (search) {
-     const filterTable: IUserInterface[] = [...noFilterTable].filter(ret => ret.name.toLowerCase().indexOf(search.toLowerCase()) > -1 );
-     console.log('Filter: ', filterTable);
-   return  this.localUserTable = [...filterTable];   
-   }
-   return this.localUserTable;
+    const noFilterTable: IUserInterface[] = [...this.localUserTable];
+    const filterTable: IUserInterface[] = [...noFilterTable].filter(
+      (ret) => ret.name.toLowerCase().indexOf(search.toLowerCase()) > -1
+    );
+    if (search && search != undefined) {
+      return (this.localUserTable = [...filterTable]);
+    }
+    return this.localUserTable;
   }
 
-  filterByName() {
-    this.userTableForm.valueChanges.pipe(delay(1000)).subscribe(d => {
-       this.searchByName(d['search_name']);
-       console.log(d['search_name'])});
-
+  getName() {
+    const noFilterTable: IUserInterface[] = [...this.localUserTable];
+    this.userTableForm.valueChanges.pipe(delay(1000)).subscribe((d) => {
+      if (d['search_name'] === '') {
+        this.localUserTable = noFilterTable;
+        return this.localUserTable;
+      }
+      return this.searchByName(d['search_name']);
+    });
   }
   ngOnDestroy(): void {
     this.unSubs.unsubscribe();
