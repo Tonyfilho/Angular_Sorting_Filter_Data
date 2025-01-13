@@ -128,7 +128,7 @@ export class UserTableComponent implements OnInit, OnDestroy {
     const filterTable: IUserInterface[] = [...noFilterTable].filter(
       (ret) => ret.name.toLowerCase().indexOf(search.toLowerCase()) > -1
     );
-    if (search && search != undefined) {
+    if (search) {
       return (this.localUserTable = [...filterTable]);
     }
     return this.localUserTable;
