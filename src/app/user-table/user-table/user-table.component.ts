@@ -1,7 +1,7 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { IUserInterface } from '../../types/user.interface';
-import { Subscription } from 'rxjs';
+import { delay, Subscription } from 'rxjs';
 import { ISortingInterface } from '../../types/sorting.interface';
 
 import { CommonModule } from '@angular/common';
@@ -34,9 +34,7 @@ export class UserTableComponent implements OnInit, OnDestroy {
       error: (e) => {},
       complete: () => {},
     });
-    this.userTableForm.valueChanges.subscribe(d => {
-      
-      console.log(d)});
+    
   }
 
   capitalizer(str: string): string {
@@ -122,11 +120,22 @@ export class UserTableComponent implements OnInit, OnDestroy {
     }
   }
 
-  searchByName(search: string): void {
+  searchByName(search: string) {
+  const   noFilterTable: IUserInterface[] = [...this.localUserTable];
+  
    if (search) {
-     const filterTable: IUserInterface[] = [...this.localUserTable].filter(ret => ret.name.toLowerCase().indexOf(search.toLowerCase()) > -1 );
-     this.localUserTable = [...filterTable];   
+     const filterTable: IUserInterface[] = [...noFilterTable].filter(ret => ret.name.toLowerCase().indexOf(search.toLowerCase()) > -1 );
+     console.log('Filter: ', filterTable);
+   return  this.localUserTable = [...filterTable];   
    }
+   return this.localUserTable;
+  }
+
+  filterByName() {
+    this.userTableForm.valueChanges.pipe(delay(1000)).subscribe(d => {
+       this.searchByName(d['search_name']);
+       console.log(d['search_name'])});
+
   }
   ngOnDestroy(): void {
     this.unSubs.unsubscribe();
